@@ -1,8 +1,14 @@
     #If u want to create your own weather app, you can reffer to this url = "https://openweathermap.org/api"
 
 import requests
+import os
 city = input("City : ")
-key = "9656046022b784a4ee34bd710a357f3e"
+api_key = os.getenv("API_KEY", "")
+if not api_key:
+    # that is api key is not provided
+    # print error and exit
+    print("Please set API_KEY environment variable")
+    os.exit(1)
       #city example = kolkata delhi mumbai bangalore
       #key is the unique appid by which the data is fetched from the database of the api (its unique, u need to login there to get yours)
 url = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + key
